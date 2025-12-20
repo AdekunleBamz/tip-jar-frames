@@ -1,9 +1,11 @@
+import { getAddress } from 'viem';
+
 // Base Chain Configuration
 export const BASE_CHAIN_ID = 8453;
 export const BASE_SEPOLIA_CHAIN_ID = 84532;
 
 // Use testnet for development, mainnet for production
-export const ACTIVE_CHAIN_ID = process.env.NEXT_PUBLIC_USE_TESTNET === 'true' 
+export const ACTIVE_CHAIN_ID = process.env.NEXT_PUBLIC_USE_TESTNET === 'true'
   ? BASE_SEPOLIA_CHAIN_ID 
   : BASE_CHAIN_ID;
 
@@ -22,10 +24,24 @@ export const CHAIN_CONFIG = {
   },
 } as const;
 
+// Helper to safely checksum address
+function safeGetAddress(address: string | undefined): string {
+  if (!address || address.trim() === '') return '';
+  try {
+    return getAddress(address.trim());
+  } catch {
+    console.error('Invalid address:', address);
+    return '';
+  }
+}
+
 // Contract addresses - update after deployment
+const mainnetAddress = process.env.NEXT_PUBLIC_TIPJAR_ADDRESS_MAINNET || '';
+const testnetAddress = process.env.NEXT_PUBLIC_TIPJAR_ADDRESS_TESTNET || '';
+
 export const CONTRACT_ADDRESSES = {
-  [BASE_CHAIN_ID]: process.env.NEXT_PUBLIC_TIPJAR_ADDRESS_MAINNET || '',
-  [BASE_SEPOLIA_CHAIN_ID]: process.env.NEXT_PUBLIC_TIPJAR_ADDRESS_TESTNET || '',
+  [BASE_CHAIN_ID]: safeGetAddress(mainnetAddress),
+  [BASE_SEPOLIA_CHAIN_ID]: safeGetAddress(testnetAddress),
 } as const;
 
 export const TIPJAR_ADDRESS = CONTRACT_ADDRESSES[ACTIVE_CHAIN_ID];
