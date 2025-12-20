@@ -7,11 +7,11 @@
   "frame": {
     "version": "1",
     "name": "Tip Jar",
-    "iconUrl": "https://tip-jar-frames-phessophissys-projects.vercel.app/icon.svg",
+    "iconUrl": "https://tip-jar-frames-phessophissys-projects.vercel.app/api/frame/image?type=icon",
     "homeUrl": "https://tip-jar-frames-phessophissys-projects.vercel.app",
-    "imageUrl": "https://tip-jar-frames-phessophissys-projects.vercel.app/og-image.svg",
-    "buttonTitle": "Create Tip Jar",
-    "splashImageUrl": "https://tip-jar-frames-phessophissys-projects.vercel.app/og-image.svg",
+    "imageUrl": "https://tip-jar-frames-phessophissys-projects.vercel.app/api/frame/image?type=og",
+    "buttonTitle": "Open Tip Jar",
+    "splashImageUrl": "https://tip-jar-frames-phessophissys-projects.vercel.app/api/frame/image?type=splash",
     "splashBackgroundColor": "#0F0F1A",
     "webhookUrl": "https://tip-jar-frames-phessophissys-projects.vercel.app/api/webhook"
   }
