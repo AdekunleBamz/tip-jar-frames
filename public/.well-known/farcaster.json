@@ -1,0 +1,18 @@
+{
+  "accountAssociation": {
+    "header": "eyJmaWQiOjAsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIn0",
+    "payload": "eyJkb21haW4iOiJ0aXAtamFyLWZyYW1lcy1waGVzc29waGlzc3lzLXByb2plY3RzLnZlcmNlbC5hcHAifQ",
+    "signature": "PLACEHOLDER_SIGNATURE"
+  },
+  "frame": {
+    "version": "1",
+    "name": "Tip Jar",
+    "iconUrl": "https://tip-jar-frames-phessophissys-projects.vercel.app/icon.svg",
+    "homeUrl": "https://tip-jar-frames-phessophissys-projects.vercel.app",
+    "imageUrl": "https://tip-jar-frames-phessophissys-projects.vercel.app/og-image.svg",
+    "buttonTitle": "Create Tip Jar",
+    "splashImageUrl": "https://tip-jar-frames-phessophissys-projects.vercel.app/og-image.svg",
+    "splashBackgroundColor": "#0F0F1A",
+    "webhookUrl": "https://tip-jar-frames-phessophissys-projects.vercel.app/api/webhook"
+  }
+}
