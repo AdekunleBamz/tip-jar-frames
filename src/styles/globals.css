@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #8B5CF6;
+  --color-primary-dark: #7C3AED;
+  --color-success: #10B981;
+  --color-background: #0F0F1A;
+  --color-surface: #1A1A2E;
+  --color-surface-light: #25253A;
+  --color-text: #F8FAFC;
+  --color-text-muted: #94A3B8;
+}
+
+body {
+  @apply bg-[var(--color-background)] text-[var(--color-text)] antialiased;
+}
+
+.gradient-primary {
+  background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card {
+  @apply bg-[var(--color-surface)] rounded-2xl border border-white/5;
+}
+
+.btn-primary {
+  @apply px-6 py-3 rounded-xl font-semibold text-white transition-all duration-200;
+  @apply bg-gradient-to-r from-purple-500 to-pink-500;
+  @apply hover:from-purple-600 hover:to-pink-600;
+  @apply active:scale-95;
+  @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 rounded-xl font-semibold text-white transition-all duration-200;
+  @apply bg-[var(--color-surface-light)] border border-white/10;
+  @apply hover:bg-white/10;
+  @apply active:scale-95;
+}
+
+.input {
+  @apply w-full px-4 py-3 rounded-xl;
+  @apply bg-[var(--color-surface-light)] border border-white/10;
+  @apply text-white placeholder:text-[var(--color-text-muted)];
+  @apply focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500;
+  @apply transition-all duration-200;
+}
+
+/* Tip amount button styles */
+.tip-btn {
+  @apply px-4 py-2 rounded-lg font-medium transition-all duration-200;
+  @apply bg-[var(--color-surface-light)] border border-white/10;
+  @apply hover:border-purple-500/50 hover:bg-purple-500/10;
+  @apply active:scale-95;
+}
+
+.tip-btn.selected {
+  @apply border-purple-500 bg-purple-500/20 text-purple-300;
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a5a;
+}
