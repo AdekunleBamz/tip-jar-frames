@@ -24,6 +24,22 @@ export const metadata: Metadata = {
     icon: '/icon.svg',
     apple: '/icon.svg',
   },
+  other: {
+    'fc:frame': JSON.stringify({
+      version: "next",
+      imageUrl: `${appUrl}/og-image.svg`,
+      button: {
+        title: "Create Tip Jar",
+        action: {
+          type: "launch_frame",
+          name: "Tip Jar",
+          url: appUrl,
+          splashImageUrl: `${appUrl}/og-image.svg`,
+          splashBackgroundColor: "#0F0F1A"
+        }
+      }
+    })
+  }
 };
 
 export default function RootLayout({
@@ -33,6 +49,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="fc:frame" content={JSON.stringify({
+          version: "next",
+          imageUrl: `${appUrl}/og-image.svg`,
+          button: {
+            title: "Create Tip Jar",
+            action: {
+              type: "launch_frame",
+              name: "Tip Jar",
+              url: appUrl,
+              splashImageUrl: `${appUrl}/og-image.svg`,
+              splashBackgroundColor: "#0F0F1A"
+            }
+          }
+        })} />
+      </head>
       <body>
         <Providers>{children}</Providers>
       </body>
