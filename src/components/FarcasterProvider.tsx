@@ -3,16 +3,25 @@
 import { useEffect, useState, createContext, useContext, ReactNode } from 'react';
 import sdk from '@farcaster/miniapp-sdk';
 
+interface FarcasterUser {
+  fid: number;
+  username?: string;
+  displayName?: string;
+  pfpUrl?: string;
+}
+
 interface FarcasterContextType {
   isSDKLoaded: boolean;
   context: any;
   isInFrame: boolean;
+  user: FarcasterUser | null;
 }
 
 const FarcasterContext = createContext<FarcasterContextType>({
   isSDKLoaded: false,
   context: null,
   isInFrame: false,
+  user: null,
 });
 
 export function useFarcaster() {
@@ -22,6 +31,7 @@ export function useFarcaster() {
 export function FarcasterProvider({ children }: { children: ReactNode }) {
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
   const [context, setContext] = useState<any>(null);
+  const [user, setUser] = useState<FarcasterUser | null>(null);
 
   useEffect(() => {
     const initSDK = async () => {
@@ -29,6 +39,16 @@ export function FarcasterProvider({ children }: { children: ReactNode }) {
         // Get context from Farcaster
         const ctx = await sdk.context;
         setContext(ctx);
+        
+        // Extract user info from context
+        if (ctx?.user) {
+          setUser({
+            fid: ctx.user.fid,
+            username: ctx.user.username,
+            displayName: ctx.user.displayName,
+            pfpUrl: ctx.user.pfpUrl,
+          });
+        }
         
         // Signal that the app is ready
         sdk.actions.ready();
@@ -47,7 +67,7 @@ export function FarcasterProvider({ children }: { children: ReactNode }) {
   const isInFrame = !!context;
 
   return (
-    <FarcasterContext.Provider value={{ isSDKLoaded, context, isInFrame }}>
+    <FarcasterContext.Provider value={{ isSDKLoaded, context, isInFrame, user }}>
       {children}
     </FarcasterContext.Provider>
   );
