@@ -189,6 +189,15 @@ NEYNAR_API_KEY=...
 
 ## Testing
 
+### Linting
+
+To check code quality:
+
+```bash
+npm run lint
+```
+
+This will run ESLint on the codebase.
 ```bash
 # Run contract tests
 npm run test
