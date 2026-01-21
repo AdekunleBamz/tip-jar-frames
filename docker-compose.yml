@@ -1,0 +1,85 @@
+version: '3.8'
+
+services:
+  # Frontend Next.js application
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_APP_NAME=Tip Jar Frames
+      - NEXT_PUBLIC_RPC_URL=https://mainnet.base.org
+    depends_on:
+      - hardhat
+    networks:
+      - tip-jar-frames-network
+    restart: unless-stopped
+
+  # Hardhat development network
+  hardhat:
+    image: node:20-alpine
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+      - ./.env:/workspace/.env:ro
+    ports:
+      - "8545:8545"
+    command: npx hardhat node --hostname 0.0.0.0 --port 8545
+    networks:
+      - tip-jar-frames-network
+    profiles:
+      - dev
+
+  # Contract development container
+  contracts:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - .:/app
+      - ./.env:/app/.env:ro
+    command: sleep infinity
+    networks:
+      - tip-jar-frames-network
+    profiles:
+      - dev
+
+  # Test runner
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - .:/app
+      - ./.env:/app/.env:ro
+    command: npm run test
+    networks:
+      - tip-jar-frames-network
+    profiles:
+      - test
+
+  # Farcaster development (optional)
+  farcaster-dev:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "3001:3001"
+    command: npx @farcaster/frame-dev-server --port 3001
+    networks:
+      - tip-jar-frames-network
+    profiles:
+      - dev
+
+volumes:
+  node_modules:
+
+networks:
+  tip-jar-frames-network:
+    driver: bridge
