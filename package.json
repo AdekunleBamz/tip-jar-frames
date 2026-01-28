@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Social-native tipping system for Farcaster",
   "private": true,
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
