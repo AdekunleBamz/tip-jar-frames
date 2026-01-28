@@ -12,6 +12,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "compile": "hardhat compile",
     "test": "hardhat test",
     "deploy": "hardhat run scripts/deploy.ts --network",
@@ -41,6 +43,8 @@
     "@types/react-dom": "^18.2.18",
     "dotenv": "^16.3.1",
     "hardhat": "^2.19.4",
+    "prettier": "^3.2.0",
+    "prettier-plugin-tailwindcss": "^0.5.11",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
