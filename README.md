@@ -1,5 +1,11 @@
 # 💜 Tip Jar Frames
 
+[![CI](https://github.com/AdekunleBamz/tip-jar-frames/actions/workflows/ci.yml/badge.svg)](https://github.com/AdekunleBamz/tip-jar-frames/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-14-black.svg)](https://nextjs.org/)
+[![Base](https://img.shields.io/badge/Built%20on-Base-blue.svg)](https://base.org/)
+
 Social-native tipping system for Farcaster creators on Base.
 
 ## Overview
@@ -189,6 +195,15 @@ NEYNAR_API_KEY=...
 
 ## Testing
 
+### Linting
+
+To check code quality:
+
+```bash
+npm run lint
+```
+
+This will run ESLint on the codebase.
 ```bash
 # Run contract tests
 npm run test

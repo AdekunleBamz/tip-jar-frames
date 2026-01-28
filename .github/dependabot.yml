@@ -1,0 +1,55 @@
+version: 2
+updates:
+  # npm dependencies
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: "deps"
+    labels:
+      - "dependencies"
+      - "npm"
+    groups:
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react*"
+      next:
+        patterns:
+          - "next"
+      wagmi:
+        patterns:
+          - "wagmi"
+          - "viem"
+          - "connectkit"
+      farcaster:
+        patterns:
+          - "@farcaster/*"
+      hardhat:
+        patterns:
+          - "hardhat"
+          - "@nomicfoundation/*"
+      dev-deps:
+        patterns:
+          - "@types/*"
+          - "typescript"
+          - "ts-node"
+        update-types:
+          - "minor"
+          - "patch"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    commit-message:
+      prefix: "ci"
+    labels:
+      - "dependencies"
+      - "github-actions"
